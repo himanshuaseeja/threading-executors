@@ -25,6 +25,36 @@ public class App {
 	
 	private static ServiceC serviceC;
 	
+	public static ServiceA getServiceA() {
+		if(serviceA == null) {
+			serviceA = new ServiceA();
+		}
+		return serviceA;
+	}
+
+	public static ServiceAA getServiceAA() {
+		if(serviceAA == null) {
+			serviceAA = new ServiceAA();
+		}
+		return serviceAA;
+	}
+
+	public static ServiceB getServiceB() {
+		if(serviceB == null) {
+			serviceB = new ServiceB();
+		}
+		return serviceB;
+	}
+
+	public static ServiceC getServiceC() {
+		if(serviceC == null) {
+			serviceC = new ServiceC();
+		}
+		return serviceC;
+	}
+
+
+	
 	public static void setServiceA(ServiceA serviceA) {
 		App.serviceA = serviceA;
 	}
@@ -94,32 +124,16 @@ public class App {
 	}
 
 	private static String callServiceC(final String fromAA, final String fromB) {
-		if(serviceC == null) {
-			serviceC = new ServiceC();// or some web service
-		}
-		
-		String outputFromC = serviceC.returnFinalOutcome(fromAA, fromB);
-		return outputFromC;
+		return getServiceC().returnFinalOutcome(fromAA, fromB);
 	}
 	private static String callServiceA() {
-		if(serviceA == null) {
-			serviceA = new ServiceA();
-		}
-		return serviceA.returnSomething();
+		return getServiceA().returnSomething();
 	}
 	private static String callServiceAA(final String fromA) {
-		if(serviceAA == null) {
-			serviceAA = new ServiceAA();
-		}
-		String outputFromAA = serviceAA.returnSomething(fromA);
-		return outputFromAA;
+		return getServiceAA().returnSomething(fromA);
 	}
 	private static String callServiceB() {
-		//ServiceB serB = new ServiceB();//or some web service
-		if(serviceB == null) {
-			serviceB = new ServiceB();
-		}
-		return serviceB.returnSomethingElse();
+		return getServiceB().returnSomethingElse();
 	}
 
 }

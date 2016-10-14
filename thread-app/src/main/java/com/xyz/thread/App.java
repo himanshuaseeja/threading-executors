@@ -61,7 +61,7 @@ public class App {
     	
     	futureFromAandAA.exceptionally(th -> {
     	    actualOutcome = "Exception in A or AA..";
-    	    return actualOutcome;
+    	    return null;
     	});
     	
     	//Step 2 which contains call to B
@@ -70,7 +70,7 @@ public class App {
     	
     	futureFromB.exceptionally(th -> {
     	    actualOutcome = "Exception in B..";
-    	    return actualOutcome;
+    	    return null;
     	});
     	
     	//Step 3 which contains call to C.. This should continue if both the above steps have completed non-exceptionally
@@ -80,19 +80,17 @@ public class App {
         	
         	futureFromC.exceptionally(th -> {
         	    actualOutcome = "Exception in C..";
-        	    return actualOutcome;
+        	    return null;
         	});
         	try {
 				actualOutcome = futureFromC.get();
+				System.out.println(actualOutcome);
 			} catch (InterruptedException | ExecutionException e) {
-				e.printStackTrace();
+				//Log exception or do cleanup stuff here..
 			}
     	}
     	
     	executorService.shutdown();
-    	
-    	System.out.println(actualOutcome);
-
 	}
 
 	private static String callServiceC(final String fromAA, final String fromB) {

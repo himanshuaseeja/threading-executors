@@ -126,12 +126,15 @@ public class App {
 	private static String callServiceC(final String fromAA, final String fromB) {
 		return getServiceC().returnFinalOutcome(fromAA, fromB);
 	}
+	
 	private static String callServiceA() {
 		return getServiceA().returnSomething();
 	}
+	
 	private static String callServiceAA(final String fromA) {
 		return getServiceAA().returnSomething(fromA);
 	}
+	
 	private static String callServiceB() {
 		return getServiceB().returnSomethingElse();
 	}

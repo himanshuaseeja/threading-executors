@@ -40,19 +40,23 @@ public class AppTest {
 
 	@Before
 	public void setUp() {
+		//Initialize all mocks
 		MockitoAnnotations.initMocks(this);
-	}
-
-	@Test
-	public void testMain() {
-		// setup mocks
+		
+		//Mock thread factory to and create executor service for test case setup
 		ThreadFactory mock = new CustomThreadFactory();
 		ExecutorService executorService = Executors.newCachedThreadPool(mock);
+		
+		//inject all mocks in unit under test
+		App.setExecutorService(executorService);
 		App.setServiceA(serviceA);
 		App.setServiceAA(serviceAA);
 		App.setServiceB(serviceB);
 		App.setServiceC(serviceC);
-		App.setExecutorService(executorService);
+	}
+
+	@Test
+	public void testMain() {
 
 		// Define stubs on all services
 		when(serviceA.returnSomething()).thenReturn("Service A..");
@@ -76,14 +80,6 @@ public class AppTest {
 
 	@Test
 	public void testMainForExceptionScenarioInA() {
-		// setup mocks
-		ThreadFactory mock = new CustomThreadFactory();
-		ExecutorService executorService = Executors.newCachedThreadPool(mock);
-		App.setServiceA(serviceA);
-		App.setServiceAA(serviceAA);
-		App.setServiceB(serviceB);
-		App.setServiceC(serviceC);
-		App.setExecutorService(executorService);
 
 		// Define stubs on all services
 		when(serviceA.returnSomething()).thenThrow(new RuntimeException());
@@ -101,14 +97,6 @@ public class AppTest {
 
 	@Test
 	public void testMainForExceptionScenarioInAA() {
-		// setup mocks
-		ThreadFactory mock = new CustomThreadFactory();
-		ExecutorService executorService = Executors.newCachedThreadPool(mock);
-		App.setServiceA(serviceA);
-		App.setServiceAA(serviceAA);
-		App.setServiceB(serviceB);
-		App.setServiceC(serviceC);
-		App.setExecutorService(executorService);
 
 		// Define stubs on all services
 		when(serviceA.returnSomething()).thenReturn("Service A..");
@@ -128,14 +116,6 @@ public class AppTest {
 	
 	@Test
 	public void testMainForExceptionScenarioInB() {
-		// setup mocks
-		ThreadFactory mock = new CustomThreadFactory();
-		ExecutorService executorService = Executors.newCachedThreadPool(mock);
-		App.setServiceA(serviceA);
-		App.setServiceAA(serviceAA);
-		App.setServiceB(serviceB);
-		App.setServiceC(serviceC);
-		App.setExecutorService(executorService);
 
 		// Define stubs on all services
 		when(serviceA.returnSomething()).thenReturn("Service A..");

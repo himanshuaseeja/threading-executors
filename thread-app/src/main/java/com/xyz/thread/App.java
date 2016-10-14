@@ -85,7 +85,6 @@ public class App {
         	try {
 				actualOutcome = futureFromC.get();
 			} catch (InterruptedException | ExecutionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     	}

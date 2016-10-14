@@ -16,7 +16,6 @@ import com.xyz.services.ServiceC;
  */
 public class App {
 	
-	
 	private static ServiceA serviceA;
 	
 	private static ServiceAA serviceAA;
@@ -52,8 +51,6 @@ public class App {
 		}
 		return serviceC;
 	}
-
-
 	
 	public static void setServiceA(ServiceA serviceA) {
 		App.serviceA = serviceA;

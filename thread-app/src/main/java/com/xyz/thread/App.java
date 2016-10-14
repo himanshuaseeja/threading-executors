@@ -5,8 +5,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.inject.Inject;
-
 import com.xyz.services.ServiceA;
 import com.xyz.services.ServiceAA;
 import com.xyz.services.ServiceB;
@@ -27,19 +25,17 @@ public class App {
 	
 	private static ServiceC serviceC;
 	
-	@Inject
 	public static void setServiceA(ServiceA serviceA) {
 		App.serviceA = serviceA;
 	}
-	@Inject
+	
 	public static void setServiceAA(ServiceAA serviceAA) {
 		App.serviceAA = serviceAA;
 	}
-	@Inject
+	
 	public static void setServiceB(ServiceB serviceB) {
 		App.serviceB = serviceB;
 	}
-	@Inject
 	public static void setServiceC(ServiceC serviceC) {
 		App.serviceC = serviceC;
 	}
